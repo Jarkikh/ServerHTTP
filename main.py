@@ -75,7 +75,13 @@ if __name__ == '__main__':
     for i in range(cpu_count):
         worker = multiprocessing.Process(target=init, args=(sockets,))
         workers.append(worker)
-        worker.start()
+        worker.start()          # Запускаем процессы
 
-    for worker in workers:
-        worker.join()
+    try:
+        for worker in workers:
+            worker.join()           # Ждем завершения процессов
+    except KeyboardInterrupt:
+        for worker in workers:
+            worker.terminate()
+
+    print('Server terminated.')
