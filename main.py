@@ -10,7 +10,7 @@ from tornado.process import fork_processes
 from server.handler import Handler
 from server.http_parser import HttpRequest
 
-CONF_PATH = 'httpd.conf'
+CONF_PATH = '/etc/httpd.conf'
 
 config = {}
 
