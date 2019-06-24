@@ -69,8 +69,10 @@ def init(sockets):
 if __name__ == '__main__':
     sockets = bind_sockets(80)
 
+    cpu_count = int(config.get('cpu_limit', 1))
+
     workers = []
-    for i in range(3):
+    for i in range(cpu_count):
         worker = multiprocessing.Process(target=init, args=(sockets,))
         workers.append(worker)
         worker.start()
